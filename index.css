@@ -1,0 +1,30 @@
+img {
+  border: 1px solid #ddd; /* Gray border */
+  border-radius: 4px;  /* Rounded border */
+  padding: 5px; /* Some padding */
+  width: 150px; /* Set a small width */
+}
+
+body { font-family: sans-serif; padding: 1em; }
+.left-panel { float: left; width: 250px; }
+.right-panel { margin-left: 260px; }
+
+.container {
+  max-width: 1140px;
+  margin: 0 auto;
+}
+
+.columns {
+  display: grid;
+  grid-template-columns: 20% 75%;
+  grid-gap: 5%
+}
+
+#searchBox {
+  margin-bottom: 2em;
+}
+
+#pagination {
+      padding: 3px 8px;
+      margin-right: 4px;
+   }
