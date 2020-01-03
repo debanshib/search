@@ -29,7 +29,7 @@ index.addObjects(records); //sends data to Algolia
 index.setSettings({
   'searchableAttributes': [
     'speakers',
-    'name',
+    'unordered(name)',
     'unordered(description)',
     'event_name',
     'unordered(tags)',
