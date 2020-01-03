@@ -14,8 +14,6 @@ app.listen(process.env.PORT || 3000, function(){
   console.log("SERVER listening on port", this.address().port, app.settings.env);
 });
 
-
-
 // to configure index settings
 const algoliasearch = require('algoliasearch');
 const instantsearch = require('instantsearch.js').default;
@@ -34,7 +32,7 @@ index.setSettings({
     'name',
     'unordered(description)',
     'event_name',
-    'unordered(tags)'
+    'unordered(tags)',
   ],
   'customRanking': [
     'desc(popularity_score)',
@@ -43,22 +41,38 @@ index.setSettings({
     'desc(informative_rating,inspiring_rating,fascinating_rating,beautiful_rating,courageous_rating,funny_rating)'
 	],
 	'attributesForFaceting': [
-		'languages'
+		'languages',
+		'event_name'
+	],
+	'replicas': [
+		'tedtalks_date_desc'
 	]
 }, (err, content) => {
-  // console.log(content);
+  console. log(content);
+})
+
+const replica_index_date = searchClient.initIndex('tedtalks_date_desc');
+
+replica_index_date.setSettings({
+	ranking: [
+		'desc(date)',
+	],
+	'attributesForFaceting': [
+		'languages',
+		'event_name'
+	]
 })
 
 //to test settings
-index.search({
-	query: 'Elizabeth Lesser',
-	filters: 'languages:French'
-}, (err, { hits } = {}) => {
-  if (err) {
-    console.log(err);
-    console.log(err.debugData);
-    return;
-  }
-
-  // console.log(hits);
-});
+// index.search({
+// 	query: 'Elizabeth Lesser',
+// 	filters: 'languages:French'
+// }, (err, { hits } = {}) => {
+//   if (err) {
+//     console.log(err);
+//     console.log(err.debugData);
+//     return;
+//   }
+//
+//   // console.log(hits);
+// });

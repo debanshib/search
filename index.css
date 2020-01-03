@@ -5,7 +5,7 @@ img {
   width: 150px; /* Set a small width */
 }
 
-body { font-family: sans-serif; padding: 1em; }
+body { font-family: helvetica; padding: 1em; }
 .left-panel { float: left; width: 250px; }
 .right-panel { margin-left: 260px; }
 
@@ -14,7 +14,61 @@ body { font-family: sans-serif; padding: 1em; }
   margin: 0 auto;
 }
 
-.columns {
+h1 .ted {
+  color: red;
+}
+
+ul {
+  list-style-type: none;
+}
+
+li {
+    margin-bottom: 7px
+}
+
+.ais-Pagination-item {
+  display: inline !important;
+  list-style-type: none !important;
+  margin-left: 15px;
+}
+
+.ais-Pagination {
+  margin-left: -150px;
+  margin-top: 100px;
+}
+
+
+.ais-SortBy-select {
+  margin-left: 40px;
+  margin-top: 20px;
+}
+
+.ais-ClearRefinements-button {
+  width: 80px;
+  margin-left: 160px;
+  margin-bottom: 80px
+}
+
+.ais-RefinementList-showMore {
+  margin-left: 40px;
+}
+
+.ais-RefinementList-count {
+  font-size: 10px
+}
+
+.ais-Pagination-list {
+  margin-top: 60px;
+}
+
+.left-column {
+  float: left;
+  display: grid;
+  grid-template-columns: 20% 75%;
+  grid-gap: 5%
+}
+
+.right-column {
   display: grid;
   grid-template-columns: 20% 75%;
   grid-gap: 5%

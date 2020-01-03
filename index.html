@@ -13,11 +13,21 @@
 </head>
 
 <body>
-	<h2>Ted Talks</h2>
+	<h1><span class="ted">TED</span>Talks</h1>
 		<div id="searchBox"></div>
-		<div>
+		<div class="left-column">
+			<h3>Sort by</h3>
+			<div id="sort-by"></div>
+			<h3>Languages</h3>
+			<div id="language-list"></div>
+			<h3>Event</h3>
+			<div id="event-list"></div>
+			<div id="clear-refinements"></div>
+			<div class=pagination>
+				<div class="pagination" id="pagination"></div>
+			</div>
 		</div>
-		<div class="columns">
+		<div class="right-column">
 			<div></div>
 			<div id="talks">
 				<div class="hits">
@@ -25,8 +35,8 @@
 				</div>
 			</div>
 		</div>
-		<div id="pagination"></div>
 	</div>
+
 	<script src="index.js"></script>
 </body>
 

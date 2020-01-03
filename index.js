@@ -6,6 +6,11 @@ const search = instantsearch({
   searchClient: searchClient,
 });
 
+search.addWidget(
+  instantsearch.widgets.clearRefinements({
+    container: '#clear-refinements',
+  })
+);
 
 function renderHits({ hits, widgetParams }) {
   console.log('hits', hits)
@@ -13,8 +18,9 @@ function renderHits({ hits, widgetParams }) {
 
   const hitTemplate = hit => {
     return `<div>
-              <div><i>${hit._highlightResult.name.value}</i></div>
-              <div><b>${hit._highlightResult.speakers[0].value}</b></div>
+                <img src="${hit.image_url}"/>
+                <div><i>${hit._highlightResult.name.value}</i></div>
+                <div><b>${hit._highlightResult.speakers[0].value}</b></div>
             </div>`;
   };
 
@@ -25,7 +31,6 @@ function renderHits({ hits, widgetParams }) {
 
 
 const customHits = instantsearch.connectors.connectHits(renderHits);
-
 
 search.addWidget(
   customHits({ container: document.querySelector("#talks") })
@@ -49,5 +54,37 @@ search.addWidget(
     }
   })
 );
+
+search.addWidget(
+  instantsearch.widgets.refinementList({
+    container: '#language-list',
+    attribute: 'languages',
+    showMore: true,
+    showMoreLimit: 20,
+    sortBy: ['count:desc'],
+  })
+);
+
+search.addWidget(
+  instantsearch.widgets.refinementList({
+    container: '#event-list',
+    attribute: 'event_name',
+    showMore: true,
+    showMoreLimit: 20,
+    sortBy: ['name:asc'],
+    count: null
+  })
+);
+
+
+search.addWidget(
+  instantsearch.widgets.sortBy({
+    container: '#sort-by',
+    items: [
+      { label: 'Featured', value: 'tedtalks' },
+      { label: 'Most Recent', value: 'tedtalks_date_desc' },
+    ],
+  })
+)
 
 search.start();
